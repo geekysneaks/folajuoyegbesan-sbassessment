@@ -1,0 +1,19 @@
+<section class="pdp-details" data-details-accordion>
+  <h2>{{ section.settings.heading }}</h2>
+
+  <!-- The JS will read description HTML from the main section and build accordions here -->
+  <div class="pdp-details__container" data-details-container></div>
+
+  <p class="pdp-details__hint">
+    <small>Tip: Use H2 headings in the product description to create accordion sections (e.g., “Details”, “Materials”, “Shipping”).</small>
+  </p>
+</section>
+
+{% schema %}
+{
+  "name": "PDP - Details Accordion",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Details" }
+  ]
+}
+{% endschema %}

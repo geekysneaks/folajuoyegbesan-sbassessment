@@ -1,0 +1,45 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product-nomad",
+      "settings": {
+        "color_option_name": "Colour"
+      }
+    },
+    "also_bought": {
+      "type": "pdp-also-bought",
+      "settings": {
+        "mode": "random",
+        "collection": "",
+        "manual_product_1": "",
+        "manual_product_2": "",
+        "heading": "Others Like You Also Bought"
+      }
+    },
+    "details": {
+      "type": "pdp-details-accordion",
+      "settings": {
+        "heading": "Details"
+      }
+    },
+    "banners": {
+      "type": "pdp-banners",
+      "settings": {}
+    },
+    "info": {
+      "type": "pdp-info-accordion",
+      "settings": {
+        "heading": "Info"
+      }
+    },
+    "faq": {
+      "type": "pdp-faq-accordion",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "heading": "FAQ"
+      }
+    }
+  },
+  "order": ["main", "also_bought", "details", "banners", "info", "faq"]
+}

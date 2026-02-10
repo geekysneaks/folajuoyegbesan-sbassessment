@@ -1,0 +1,24 @@
+{% assign b1m = product.metafields.custom.pdp_banner_1_media.value %}
+{% assign b1h = product.metafields.custom.pdp_banner_1_heading.value %}
+{% assign b1t = product.metafields.custom.pdp_banner_1_text.value %}
+
+{% assign b2m = product.metafields.custom.pdp_banner_2_media.value %}
+{% assign b2h = product.metafields.custom.pdp_banner_2_heading.value %}
+{% assign b2t = product.metafields.custom.pdp_banner_2_text.value %}
+
+{% assign b3m = product.metafields.custom.pdp_banner_3_media.value %}
+{% assign b3h = product.metafields.custom.pdp_banner_3_heading.value %}
+{% assign b3t = product.metafields.custom.pdp_banner_3_text.value %}
+
+<section class="pdp-banners">
+  {% render 'pdp-banner', media: b1m, heading: b1h, text: b1t %}
+  {% render 'pdp-banner', media: b2m, heading: b2h, text: b2t %}
+  {% render 'pdp-banner', media: b3m, heading: b3h, text: b3t %}
+</section>
+
+{% schema %}
+{
+  "name": "PDP - Banners",
+  "settings": []
+}
+{% endschema %}

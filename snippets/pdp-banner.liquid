@@ -1,0 +1,18 @@
+{% if media != blank or heading != blank or text != blank %}
+  <div class="pdp-banner">
+    {% if media != blank %}
+      <div class="pdp-banner__media">
+        {% if media.media_type == 'image' %}
+          <img src="{{ media | image_url: width: 1600 }}" alt="{{ heading | escape }}" loading="lazy">
+        {% else %}
+          <!-- If file is a video, Shopify may treat it differently; keep it simple -->
+          <a href="{{ media | file_url }}" target="_blank" rel="noopener">View media</a>
+        {% endif %}
+      </div>
+    {% endif %}
+    <div class="pdp-banner__copy">
+      {% if heading != blank %}<h3>{{ heading }}</h3>{% endif %}
+      {% if text != blank %}<div class="rte">{{ text }}</div>{% endif %}
+    </div>
+  </div>
+{% endif %}

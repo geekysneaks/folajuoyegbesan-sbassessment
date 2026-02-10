@@ -1,0 +1,62 @@
+{% liquid
+  assign mode = section.settings.mode
+  assign heading = section.settings.heading
+  assign items = ''
+%}
+
+<section class="pdp-also-bought">
+  {% if heading != blank %}
+    <h2>{{ heading }}</h2>
+  {% endif %}
+
+  <div class="pdp-also-bought__grid" data-also-bought>
+    {% if mode == 'manual' and section.settings.manual_product_1 != blank and section.settings.manual_product_2 != blank %}
+      {% assign p1 = all_products[section.settings.manual_product_1] %}
+      {% assign p2 = all_products[section.settings.manual_product_2] %}
+      {% render 'mini-product-card', p: p1 %}
+      {% render 'mini-product-card', p: p2 %}
+    {% else %}
+      {% assign col = collections[section.settings.collection] %}
+      {% if col != blank %}
+        {% assign handles = '' %}
+        {% for p in col.products %}
+          {% if p.id != product.id %}
+            {% assign handles = handles | append: p.handle | append: '|' %}
+          {% endif %}
+        {% endfor %}
+        <div data-random-handles hidden>{{ handles }}</div>
+        <!-- JS will populate 2 random items -->
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <script type="application/json" data-collection-products>
+    {% if mode == 'random' and collections[section.settings.collection] != blank %}
+      {{ collections[section.settings.collection].products | json }}
+    {% else %}
+      []
+    {% endif %}
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "PDP - Also Bought",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Others Like You Also Bought" },
+    {
+      "type": "select",
+      "id": "mode",
+      "label": "Mode",
+      "default": "random",
+      "options": [
+        { "value": "random", "label": "Random 2 from collection" },
+        { "value": "manual", "label": "Manually choose 2 products" }
+      ]
+    },
+    { "type": "collection", "id": "collection", "label": "Collection (for random mode)" },
+    { "type": "product", "id": "manual_product_1", "label": "Manual product 1" },
+    { "type": "product", "id": "manual_product_2", "label": "Manual product 2" }
+  ]
+}
+{% endschema %}

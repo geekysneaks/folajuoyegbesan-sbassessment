@@ -1,0 +1,11 @@
+{% if p != blank %}
+  <a class="mini-card" href="{{ p.url }}">
+    {% if p.featured_image %}
+      <img src="{{ p.featured_image | image_url: width: 600 }}" alt="{{ p.title | escape }}" loading="lazy">
+    {% endif %}
+    <div class="mini-card__meta">
+      <div class="mini-card__title">{{ p.title }}</div>
+      <div class="mini-card__price">{{ p.price | money }}</div>
+    </div>
+  </a>
+{% endif %}

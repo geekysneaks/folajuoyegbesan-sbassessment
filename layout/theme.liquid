@@ -296,6 +296,8 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+    {{ 'pdp-nomad.css' | asset_url | stylesheet_tag }}
+{{ 'pdp-nomad.js' | asset_url | script_tag }}
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">

@@ -49,7 +49,7 @@
 
        {% for option in product.options_with_values %}
   {% assign is_color = false %}
-  {% if option.name == color_option_name %}
+  {% if option.name == colour_option_name %}
     {% assign is_color = true %}
   {% endif %}
 
@@ -57,7 +57,7 @@
     <div class="pdp-nomad__option-label">{{ option.name }}</div>
 
     {% if is_color %}
-      {% assign swatches = product.metafields.custom.color_swatches.value %}
+      {% assign swatches = product.metafields.custom.colour_swatches.value %}
       <div class="pdp-nomad__swatches" data-swatches>
         {% for value in option.values %}
           {% assign swatch_hex = '' %}
@@ -156,9 +156,9 @@
   "settings": [
     {
       "type": "text",
-      "id": "color_option_name",
-      "label": "Color option name",
-      "default": "Color"
+      "id": "colour_option_name",
+      "label": "Colour option name",
+      "default": "Colour"
     }
   ]
 }
